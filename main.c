@@ -181,6 +181,38 @@ void searches(student *p, int cno, int flag)
 
 }
 
+void sum(student *p, int sno, int cno)
+{
+	int i = 0;
+	student *head = p;
+
+	for (i = 0; i < cno; i++)
+	{
+		int num[5] = { 0 };
+		p = head;
+		while (p != NULL)
+		{
+			if (p->score[i] > 90) num[0]++;
+			else if (p->score[i] > 80)num[1]++;
+			else if (p->score[i] > 70)num[2]++;
+			else if (p->score[i] > 60)num[3]++;
+			else num[4]++;
+
+			p = p->next;
+		}
+		printf("Course%d:\n\
+				O: %d %.1f\%\n\
+				E: %d %.1f\%\n\
+				M: %d %.1f\%\n\
+				P: %d %.1f\%\n\
+				F: %d %.1f\%\n", i + 1, num[0], 100 * (float)num[0] / sno, \
+			num[1], 100 * (float)num[1] / sno, \
+			num[2], 100 * (float)num[2] / sno, \
+			num[3], 100 * (float)num[3] / sno, \
+			num[4], 100 * (float)num[4] / sno);
+	}
+}
+
 void print(student *p, int cno, float *cs, float *ca)
 {
 	int i;
@@ -266,6 +298,7 @@ int filein(void)
 	printf("%s", text);
 	return 1;
 }
+
 int main() {
 
 	student *head = NULL, *p1 = NULL;
@@ -293,9 +326,10 @@ int main() {
 			CASE 7: searches(head, cno, 2);
 			CASE 8: searches(head, cno, 3);
 			CASE 9: print(head->next, cno, course_score, course_aver);
-			CASE 10: if(fileout(head->next, cno, course_score, course_aver))
+			CASE 10: sum(head->next, sno, cno);
+			CASE 11: if(fileout(head->next, cno, course_score, course_aver))
 						printf("done");
-			CASE 11: filein();
+			CASE 12: filein();
 			CASE 0 : return 0;
 		}
 		printf("\nWhat to do then?");
