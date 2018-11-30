@@ -201,11 +201,11 @@ void sum(student *p, int sno, int cno)
 			p = p->next;
 		}
 		printf("Course%d:\n\
-				O: %d %.1f\%\n\
-				E: %d %.1f\%\n\
-				M: %d %.1f\%\n\
-				P: %d %.1f\%\n\
-				F: %d %.1f\%\n", i + 1, num[0], 100 * (float)num[0] / sno, \
+				O: %d %.1f%%\n\
+				E: %d %.1f%%\n\
+				M: %d %.1f%%\n\
+				P: %d %.1f%%\n\
+				F: %d %.1f%%\n", i + 1, num[0], 100 * (float)num[0] / sno, \
 			num[1], 100 * (float)num[1] / sno, \
 			num[2], 100 * (float)num[2] / sno, \
 			num[3], 100 * (float)num[3] / sno, \
